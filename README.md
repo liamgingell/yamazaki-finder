@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -23,7 +22,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-=======
-# yamazaki-finder
-Mobile-friendly app to find your local mecca of freshly cooked, calorific delights!
->>>>>>> a4dfaaa1b0939639f30d38efffb20da6e71ff2df
