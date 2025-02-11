@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yamazaki Finder</title>
+</head>
+<body>
+
+  <h1>Find your local mecca!</h1>
+
+  <div id="map">
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Initialize the map centered around Tokyo
+        var map = L.map('map').setView([35.6895, 139.6917], 12);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Fetch store locations from Rails API
+        fetch("/find_stores?lat=35.6895&lng=139.6917")
+          .then(response => response.json())
+          .then(data => {
+            data.forEach(store => {
+              if (store.latitude && store.longitude) {
+                L.marker([store.latitude, store.longitude])
+                  .addTo(map)
+                  .bindPopup(`<b>${store.name}</b><br>${store.address}`);
+              }
+            });
+          });
+      });
+    </script>
+  </div>
+
+</body>
+</html>

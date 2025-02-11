@@ -3,6 +3,10 @@ require 'net/http'
 require 'json'
 
 class StoresController < ApplicationController
+  def index
+
+  end
+
   def find_stores
     lat = params[:lat]
     lng = params[:lng]
